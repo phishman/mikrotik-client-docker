@@ -58,7 +58,7 @@ This walk-through assumes that your MikroTik device is present at IP `192.168.1.
 2. Upload the public key to your MikroTik device
 
     ```
-    scp ~/.ssh/id_dsa.pub user@192.168.1.1:/
+    scp ~/.ssh/id_dsa.pub johndoe@192.168.1.1:/
     ```
 
 3. Import the public key to your user account on your MikroTik device
@@ -84,6 +84,7 @@ This walk-through assumes that your MikroTik device is present at IP `192.168.1.
 4. Encode the private key using `base64`
 
     ```
+    mkdir -p ~/mykeys
     base64 ~/.ssh/id_dsa > ~/mykeys/id_dsa.base64
     ```
 
