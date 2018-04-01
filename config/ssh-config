@@ -1,0 +1,3 @@
+PubkeyAcceptedKeyTypes +ssh-dss
+Host *
+    StrictHostKeyChecking no

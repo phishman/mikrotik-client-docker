@@ -1,0 +1,25 @@
+#!/bin/bash
+
+mkdir -p $SSH_DIR
+
+if [ -n "$MIKROTIK_PASSWORD" ]; then
+  sshpass -p "$MIKROTIK_PASSWORD" ssh -q -oBatchMode=no $MIKROTIK_USER@$MIKROTIK_HOST $@
+  exit 1
+else
+  if [ -n "$MIKROTIK_SSH_KEY" ]; then
+    echo "$MIKROTIK_SSH_KEY" | base64 -d > $SSH_DIR/id_dsa && chmod 700 $SSH_DIR/id_dsa
+  fi
+
+  if [ -f $KEY_DIR/id_dsa.base64 ]; then
+    base64 -d $KEY_DIR/id_dsa.base64 > $SSH_DIR/id_dsa && chmod 700 $SSH_DIR/id_dsa
+  fi
+
+  if [ -f $SSH_DIR/id_dsa ]; then
+    ssh -q -oBatchMode=no $MIKROTIK_USER@$MIKROTIK_HOST $@
+    exit 1
+  else
+    echo "No password, SSH key variable or SSH key file provided, exiting."
+  fi
+fi
+
+rm -f $SSH_DIR/id_dsa
