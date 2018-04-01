@@ -67,19 +67,19 @@ This walk-through assumes that your MikroTik device is present at IP `192.168.1.
 
     Using the RouterOS console:
 
-        ```
-        user ssh-keys import file=id_dsa.pub 
-        ```
+    ```
+    user ssh-keys import file=id_dsa.pub 
+    ```
 
     Using the [WinBox](https://mikrotik.com/download) GUI:
 
-        1. Open `System` menu
-        2. Select `Users`
-        3. Switch to `SSH keys` tab
-        4. Click `Import SSH key` button
-        5. Set the corrent `User`
-        6. Locate the uploaded file (should be visible immediately)
-        7. Click `Import SSH key`
+    1. Open `System` menu
+    2. Select `Users`
+    3. Switch to `SSH keys` tab
+    4. Click `Import SSH key` button
+    5. Set the corrent `User`
+    6. Locate the uploaded file (should be visible immediately)
+    7. Click `Import SSH key`
 
 4. Encode the private key using `base64`
 
